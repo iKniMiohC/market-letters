@@ -1,0 +1,95 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="claude:viewport-fit-sides" content="cover"><title>시장에 대한 생각</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap"><style>
+:root {
+  color-scheme: dark;
+  --bg: #121211; --panel: #1a1a19; --line: #2c2c2a;
+  --ink: #f0efec; --ink2: #c3c2b7; --muted: #898781;
+  --accent: #3987e5; --up: #ec7a7a; --down: #6aa7f0; --warn: #d9a441;
+  --sans: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 64px; margin: 0; }
+a { color: inherit; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.wrap { max-width: 1080px; margin: 0 auto; display: grid; gap: 44px; }
+nav.top { max-width: 1080px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 4px 20px; align-items: center;
+  padding-block: 18px; border-bottom: 1px solid var(--line); margin-bottom: 36px; font-size: 14px; }
+nav.top .brand { font-weight: 700; margin-right: auto; text-decoration: none; }
+nav.top a:not(.brand) { color: var(--muted); text-decoration: none; }
+nav.top a:not(.brand):hover, nav.top a[aria-current] { color: var(--ink); }
+header.page { display: grid; gap: 8px; }
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; color: var(--muted); text-transform: uppercase; }
+h1 { font-size: clamp(28px, 5vw, 40px); line-height: 1.2; margin: 0; font-weight: 700; text-wrap: balance; }
+h2 { font-size: 20px; margin: 0; font-weight: 700; text-wrap: balance; }
+.sub { color: var(--ink2); margin: 0; max-width: 65ch; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px 16px; font-family: var(--mono); font-size: 12px; color: var(--muted); align-items: center; }
+.tiles { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 980px) { .tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 680px) { .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 440px) { .tiles { grid-template-columns: minmax(0, 1fr); } }
+.tile { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 16px; display: grid; gap: 10px; align-content: start; }
+.tile .name { font-size: 13px; color: var(--ink2); display: flex; justify-content: space-between; gap: 8px; }
+.tile .px { font-family: var(--mono); font-size: 26px; font-weight: 500; font-variant-numeric: tabular-nums; line-height: 1.1; }
+.tile dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; font-size: 12.5px; }
+.tile dt { color: var(--muted); }
+.tile dd { margin: 0; text-align: right; font-family: var(--mono); font-variant-numeric: tabular-nums; color: var(--ink2); }
+.chip { font-size: 11.5px; padding: 1px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink2); white-space: nowrap; font-family: var(--sans); }
+.chip.dn { border-color: color-mix(in srgb, var(--down) 50%, transparent); color: var(--down); }
+.chip.up { border-color: color-mix(in srgb, var(--up) 50%, transparent); color: var(--up); }
+.chip.draft { border-color: color-mix(in srgb, var(--warn) 55%, transparent); color: var(--warn); }
+.up { color: var(--up) !important; } .dn { color: var(--down) !important; }
+section.block { display: grid; gap: 16px; }
+.block-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px; border-bottom: 1px solid var(--line); padding-bottom: 10px; }
+.block-head span, .block-head a { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+figure { margin: 0; }
+figure img, .prose img { display: block; width: 100%; height: auto; border-radius: 4px; border: 1px solid var(--line); }
+.grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.grid2 > figure:last-child:nth-child(odd) { grid-column: 1 / -1; }
+@media (max-width: 760px) { .grid2 { grid-template-columns: minmax(0, 1fr); } }
+.tbl { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
+table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+th { text-align: left; font-weight: 500; color: var(--muted); font-size: 12px; background: var(--panel); }
+td { color: var(--ink2); }
+td.n, th.n, .prose td[style*="right"], .prose th[style*="right"] { text-align: right; font-family: var(--mono); font-variant-numeric: tabular-nums; }
+td:first-child { color: var(--ink); }
+.hi { background: color-mix(in srgb, var(--accent) 16%, transparent); color: var(--ink) !important; }
+.caveat { border-left: 2px solid var(--warn); padding: 4px 0 4px 14px; color: var(--ink2); font-size: 14px; max-width: 75ch; }
+footer { color: var(--muted); font-size: 12.5px; display: grid; gap: 6px; border-top: 1px solid var(--line); padding-top: 16px; }
+code { font-family: var(--mono); font-size: 12.5px; color: var(--ink2); }
+
+/* 허브 */
+.cats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+@media (max-width: 900px) { .cats { grid-template-columns: minmax(0, 1fr); } }
+.cat { display: grid; gap: 12px; align-content: start; min-width: 0; }
+.cat-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; border-bottom: 1px solid var(--line); padding-bottom: 10px; }
+.cat-head .count { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+.cat-desc { color: var(--muted); font-size: 13px; margin: 0; }
+.post { display: grid; gap: 4px; padding: 12px 0; border-bottom: 1px solid var(--line); text-decoration: none; }
+.post:last-child { border-bottom: 0; }
+.post .t { font-weight: 500; color: var(--ink); }
+.post:hover .t { text-decoration: underline; text-underline-offset: 3px; }
+.post .s { color: var(--ink2); font-size: 13.5px; }
+.post .m { display: flex; flex-wrap: wrap; gap: 6px 10px; font-family: var(--mono); font-size: 11.5px; color: var(--muted); align-items: center; }
+.empty { color: var(--muted); font-size: 13.5px; border: 1px dashed var(--line); border-radius: 6px; padding: 14px; }
+
+/* 글 */
+.prose { max-width: 760px; display: grid; gap: 14px; min-width: 0; }
+.prose h2 { margin-top: 20px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+.prose h3 { font-size: 16px; margin: 8px 0 0; }
+.prose p, .prose ul, .prose ol { margin: 0; color: var(--ink2); }
+.prose ul, .prose ol { padding-left: 20px; display: grid; gap: 4px; }
+.prose strong { color: var(--ink); font-weight: 500; }
+.prose blockquote { margin: 0; border-left: 2px solid var(--line); padding-left: 14px; color: var(--muted); font-size: 14px; }
+.prose hr { border: 0; border-top: 1px solid var(--line); width: 100%; margin: 8px 0; }
+.prose em { color: var(--muted); font-style: normal; font-size: 12.5px; }
+</style></head><body><nav class="top"><a class="brand" href="index.html">시장에 대한 생각</a><a href="index.html" aria-current=page>홈</a><a href="dashboard.html">분기 대시보드</a><a href="index.html#quarterly">분기 전망</a><a href="index.html#daily">데일리</a><a href="index.html#sector">섹터</a></nav><div class="wrap">
+<header class="page"><div class="eyebrow">시장 기록</div><h1>시장에 대한 생각</h1>
+<p class="sub">매크로와 데이터로 시장을 읽고, 분기마다 뷰와 목표 구간을 남긴 뒤 스스로 채점합니다. 코스피 · 코스닥 · 나스닥 · 비트코인.</p></header>
+<section class="block"><div class="block-head"><h2>지금 시장</h2><a href="dashboard.html">2026-11-18 종가 · 독립 출처 대조 10/10 일치 · 분기 대시보드 →</a></div><div class="tiles"><div class="tile"><div class="name">코스피 <span class="chip dn">강한 하락</span></div><div class="px">5,067</div><dl><dt>1M / 3M</dt><dd><span class="dn">-12.1%</span> / <span class="dn">-21.7%</span></dd><dt>200일선 대비</dt><dd><span class="dn">-22.3%</span></dd></dl><div class="meta">2026-11-18 종가</div></div><div class="tile"><div class="name">코스닥 <span class="chip dn">강한 하락</span></div><div class="px">662.81</div><dl><dt>1M / 3M</dt><dd><span class="dn">-18.1%</span> / <span class="dn">-19.6%</span></dd><dt>200일선 대비</dt><dd><span class="dn">-30.6%</span></dd></dl><div class="meta">2026-11-18 종가</div></div><div class="tile"><div class="name">나스닥 <span class="chip dn">완만한 하락</span></div><div class="px">24,328</div><dl><dt>1M / 3M</dt><dd><span class="dn">-6.9%</span> / <span class="dn">-7.5%</span></dd><dt>200일선 대비</dt><dd><span class="dn">-3.3%</span></dd></dl><div class="meta">2026-11-17 종가</div></div><div class="tile"><div class="name">비트코인 <span class="chip ">박스권</span></div><div class="px">$64,894</div><dl><dt>1M / 3M</dt><dd><span class="dn">-20.9%</span> / <span class="up">+0.3%</span></dd><dt>200일선 대비</dt><dd><span class="dn">-10.9%</span></dd></dl><div class="meta">2026-11-17 종가</div></div><div class="tile"><div class="name">금 <span class="chip dn">하락</span></div><div class="px">$3,864</div><dl><dt>1M / 3M</dt><dd><span class="dn">-7.6%</span> / <span class="dn">-12.6%</span></dd><dt>200일선 대비</dt><dd><span class="dn">-13.4%</span></dd></dl><div class="meta">2026-11-17 종가</div></div></div></section>
+<div class="cats"><section class="cat" id="quarterly"><div class="cat-head"><h2>분기 전망</h2><span class="count">1편</span></div><p class="cat-desc">91일 뷰와 목표 구간. 만기에 채점한다.</p><a class="post" href="p/quarterly-2026-11-19-8e7822.html"><span class="t">2026 Q4 시장 서한</span><span class="s">펀더멘털은 살아 있고 가격은 정책·인물·금리 충격에 무너졌다. 한국은 완만한 반등, 비트코인은 한 번 더 아래, 금은 중앙은행과 실질금리 사이의 박스권.</span><span class="m"><span>2026-11-19</span><span>#분기전망 #연준 #반도체 #AI #금</span></span></a></section><section class="cat" id="daily"><div class="cat-head"><h2>데일리 노트</h2><span class="count">0편</span></div><p class="cat-desc">그날의 이슈가 어떤 지표를 움직였고, 분기 뷰에 어떤 영향을 주는가.</p><div class="empty">아직 글이 없습니다.<br><code>python -m dashboard daily &quot;제목&quot;</code></div></section><section class="cat" id="sector"><div class="cat-head"><h2>섹터 노트</h2><span class="count">0편</span></div><p class="cat-desc">1~2년 이상 이어질 테마에 대한 논지와 업데이트 기록.</p><div class="empty">아직 글이 없습니다.<br><code>python -m dashboard sector &lt;섹터 key&gt;</code></div></section></div>
+<section class="block"><div class="block-head"><h2>예측 장부</h2><span>만기 91일 · 뷰 + 목표 구간</span></div><div class="tbl"><table><thead><tr><th>ID</th><th>자산</th><th>뷰</th><th class=n>목표 구간</th><th class=n>구간 폭 (1σ 대비)</th><th class=n>기준값</th><th class=n>만기</th><th class=n>결과</th></tr></thead><tbody><tr><td>2026Q4-01</td><td>코스피</td><td><span class="chip up">완만한 상승</span></td><td class=n>4,800 ~ 5,900</td><td class=n>0.49</td><td class=n>5,067</td><td class=n>2027-02-18</td><td class=n>채점 전</td></tr><tr><td>2026Q4-02</td><td>코스닥</td><td><span class="chip ">박스권</span></td><td class=n>600.00 ~ 740.00</td><td class=n>0.48</td><td class=n>662.81</td><td class=n>2027-02-18</td><td class=n>채점 전</td></tr><tr><td>2026Q4-03</td><td>나스닥</td><td><span class="chip up">완만한 상승</span></td><td class=n>23,500 ~ 27,000</td><td class=n>0.66</td><td class=n>24,328</td><td class=n>2027-02-18</td><td class=n>채점 전</td></tr><tr><td>2026Q4-04</td><td>비트코인</td><td><span class="chip dn">완만한 하락</span></td><td class=n>50,000 ~ 69,000</td><td class=n>0.74</td><td class=n>64,894</td><td class=n>2027-02-18</td><td class=n>채점 전</td></tr><tr><td>2026Q4-05</td><td>금</td><td><span class="chip ">박스권</span></td><td class=n>3,600 ~ 4,150</td><td class=n>0.68</td><td class=n>3,864</td><td class=n>2027-02-18</td><td class=n>채점 전</td></tr></tbody></table></div><p class="sub" style="font-size:13px">점수 = 뷰 점수(적중 1.0, 한 칸 차이 0.5) × 50% + 구간 적중 × 50%. 구간 폭은 목표 구간 폭 ÷ 기록 시점 다음 분기 1σ 범위 폭으로, 작을수록 과감한 예측입니다.</p></section>
+<footer><span>개인적인 시장 기록이며 투자 권유가 아닙니다.</span></footer></div></body></html>
